@@ -1,23 +1,33 @@
+
 ## Route-Planner
 Routing service application, to help users find routes from any station to any other station on the stations and lines of Singapore’s urban rail system.
 
 ## Running the Application
 **Generate executable jar**
  - Clone the project. 
-`git clone https://github.com/jaeindia/route-planner.git`
+```
+git clone https://github.com/jaeindia/route-planner.git
+```
 - Go to the main directory. Build project.
-`cd route-planner/`
- `mvn clean package spring-boot:repackage`
+```
+cd route-planner/
+mvn clean package spring-boot:repackage
+```
 - Run the application.
-`java -jar target/routeplanner-0.0.1-SNAPSHOT.jar`
+```
+java -jar target/routeplanner-0.0.1-SNAPSHOT.jar
+```
 
 **Download executable jar**
+
 [jar](executable/routeplanner-0.0.1-SNAPSHOT.jar)
 ## APIs
 **OpenAPI descriptions**
+
 [http://localhost:8080/routeplanner-docs](http://localhost:8080/routeplanner-docs)
 
 **Swagger UI**
+
 [http://localhost:8080/routeplanner-swagger-ui.html](http://localhost:8080/routeplanner-swagger-ui.html)
 
 
@@ -211,67 +221,68 @@ Find atmost 3 (K <= 3) shortest routes between source station and destination st
   }
 ]
 ```
-## Project Structure
-  
-        ├── main
-        │   ├── java
-        │   │   └── com
-        │   │       └── zendesk
-        │   │           └── company
-        │   │               └── routeplanner
-        │   │                   ├── controller
-        │   │                   │   └── RouteHandler.java
-        │   │                   ├── entity
-        │   │                   │   ├── graph
-        │   │                   │   │   ├── Edge.java
-        │   │                   │   │   ├── Line.java
-        │   │                   │   │   └── Node.java
-        │   │                   │   ├── request
-        │   │                   │   │   ├── RouteRequestVo.java
-        │   │                   │   │   └── RouteRequestWithTimeVo.java
-        │   │                   │   └── response
-        │   │                   │       ├── CustomErrorResponse.java
-        │   │                   │       └── RouteResponseVo.java
-        │   │                   ├── exception
-        │   │                   │   ├── AbstractCustomException.java
-        │   │                   │   ├── BadRequestException.java
-        │   │                   │   ├── handler
-        │   │                   │   │   └── CustomGlobalExceptionHandler.java
-        │   │                   │   ├── NoValidPathsExistException.java
-        │   │                   │   ├── ResourceNotFoundException.java
-        │   │                   │   └── ServerErrorException.java
-        │   │                   ├── graphoperations
-        │   │                   │   ├── GraphHolder.java
-        │   │                   │   ├── GraphLoader.java
-        │   │                   │   ├── ShortestPath.java
-        │   │                   │   └── time
-        │   │                   │       ├── NightHours.java
-        │   │                   │       ├── NonPeakHours.java
-        │   │                   │       ├── PeakHours.java
-        │   │                   │       ├── TimeOfDay.java
-        │   │                   │       └── TravelTimeCalcContext.java
-        │   │                   ├── RouteplannerApplication.java
-        │   │                   ├── service
-        │   │                   │   ├── GraphService.java
-        │   │                   │   └── RoutesService.java
-        │   │                   └── util
-        │   │                       ├── Consts.java
-        │   │                       └── GraphUtil.java
-        │   └── resources
-        │       ├── application.properties
-        │       ├── data
-        │       │   └── StationMap.csv
-        │       ├── static
-        │       └── templates
-        └── test
-            └── java
-                └── com
-                    └── zendesk
-                        └── company
-                            └── routeplanner
-                                ├── AbstractTest.java
-                                ├── RouteRequestsWithoutTimeTests.java
-                                └── RouteRequestsWithTimeTests.java
+## Project Structure        .
+```
+├── main
+│   ├── java
+│   │   └── com
+│   │       └── zendesk
+│   │           └── company
+│   │               └── routeplanner
+│   │                   ├── controller
+│   │                   │   └── RouteHandler.java
+│   │                   ├── entity
+│   │                   │   ├── graph
+│   │                   │   │   ├── Edge.java
+│   │                   │   │   ├── Line.java
+│   │                   │   │   └── Node.java
+│   │                   │   ├── request
+│   │                   │   │   ├── RouteRequestVo.java
+│   │                   │   │   └── RouteRequestWithTimeVo.java
+│   │                   │   └── response
+│   │                   │       ├── CustomErrorResponse.java
+│   │                   │       └── RouteResponseVo.java
+│   │                   ├── exception
+│   │                   │   ├── AbstractCustomException.java
+│   │                   │   ├── BadRequestException.java
+│   │                   │   ├── handler
+│   │                   │   │   └── CustomGlobalExceptionHandler.java
+│   │                   │   ├── NoValidPathsExistException.java
+│   │                   │   ├── ResourceNotFoundException.java
+│   │                   │   └── ServerErrorException.java
+│   │                   ├── graphoperations
+│   │                   │   ├── GraphHolder.java
+│   │                   │   ├── GraphLoader.java
+│   │                   │   ├── ShortestPath.java
+│   │                   │   └── time
+│   │                   │       ├── NightHours.java
+│   │                   │       ├── NonPeakHours.java
+│   │                   │       ├── PeakHours.java
+│   │                   │       ├── TimeOfDay.java
+│   │                   │       └── TravelTimeCalcContext.java
+│   │                   ├── RouteplannerApplication.java
+│   │                   ├── service
+│   │                   │   ├── GraphService.java
+│   │                   │   └── RoutesService.java
+│   │                   └── util
+│   │                       ├── Consts.java
+│   │                       └── TimeUtil.java
+│   └── resources
+│       ├── application.properties
+│       ├── data
+│       │   └── StationMap.csv
+│       ├── static
+│       └── templates
+└── test
+    └── java
+        └── com
+            └── zendesk
+                └── company
+                    └── routeplanner
+                        ├── AbstractTestIT.java
+                        ├── RouteRequestsWithoutTimeIT.java
+                        └── RouteRequestsWithTimeIT.java
+```
 
 ## Tests Overall Coverage Summary
 
