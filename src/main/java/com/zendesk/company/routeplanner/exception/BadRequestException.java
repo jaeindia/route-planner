@@ -3,6 +3,9 @@ package com.zendesk.company.routeplanner.exception;
 
 import org.springframework.http.HttpStatus;
 
+/**
+ * Custom class for BadRequestException.
+ */
 public class BadRequestException extends AbstractCustomException {
     private static final long serialVersionUID = 588460394602133350L;
     private static final String MESSAGE = "You are not allowed to perform this operation.";

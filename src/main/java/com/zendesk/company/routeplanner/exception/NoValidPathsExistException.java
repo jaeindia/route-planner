@@ -3,6 +3,9 @@ package com.zendesk.company.routeplanner.exception;
 
 import org.springframework.http.HttpStatus;
 
+/**
+ * Custom class for NoValidPathsExistException.
+ */
 public class NoValidPathsExistException extends AbstractCustomException {
     private static final long serialVersionUID = 588460394602133351L;
     private static final String MESSAGE = "No valid paths exist.";

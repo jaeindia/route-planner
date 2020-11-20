@@ -5,6 +5,9 @@ import com.zendesk.company.routeplanner.util.TimeUtil;
 
 import java.util.Date;
 
+/**
+ * Class to check if the time of day is peak hours.
+ */
 public class PeakHours extends TimeOfDay {
     public PeakHours() {
         // Set time

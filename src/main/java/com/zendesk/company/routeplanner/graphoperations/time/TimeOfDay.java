@@ -10,6 +10,9 @@ import java.util.Map;
 
 @Getter
 @Setter
+/**
+ * Class to determine the time of day.
+ */
 public abstract class TimeOfDay {
     // Travel duration (line)
     Map<String, Integer> travelTimeMap = new HashMap<>();

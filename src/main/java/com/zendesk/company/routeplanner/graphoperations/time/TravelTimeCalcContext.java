@@ -2,6 +2,9 @@ package com.zendesk.company.routeplanner.graphoperations.time;
 
 import java.util.Date;
 
+/**
+ * Context class to determine the travel time.
+ */
 public class TravelTimeCalcContext {
     private TimeOfDay peakHours;
 

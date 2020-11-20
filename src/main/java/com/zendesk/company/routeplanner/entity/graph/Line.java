@@ -2,6 +2,9 @@ package com.zendesk.company.routeplanner.entity.graph;
 
 import lombok.Data;
 
+/**
+ * Line class implements a station line in the rail system.
+ */
 @Data
 public class Line {
     private String code;

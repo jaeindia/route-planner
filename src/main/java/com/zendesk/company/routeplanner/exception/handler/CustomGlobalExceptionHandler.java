@@ -18,6 +18,9 @@ import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExcep
 import java.util.*;
 import java.util.stream.Collectors;
 
+/**
+ * Custom class for all raised exceptions.
+ */
 @ControllerAdvice
 public class CustomGlobalExceptionHandler extends ResponseEntityExceptionHandler {
     private final Logger log = LogManager.getLogger(CustomGlobalExceptionHandler.class);

@@ -3,6 +3,9 @@ package com.zendesk.company.routeplanner.exception;
 import lombok.Getter;
 import org.springframework.http.HttpStatus;
 
+/**
+ * Custom exception class.
+ */
 @Getter
 public abstract class AbstractCustomException extends RuntimeException {
     private static final long serialVersionUID = 588460394602133350L;

@@ -30,7 +30,7 @@ public class GraphService {
 
 
     /**
-     * Generate Staions graph from the import file.
+     * Generate Stations map from the import file.
      */
     public Graph<Node, DefaultWeightedEdge> generateGraph() {
         Reader reader = graphLoader.getReader();

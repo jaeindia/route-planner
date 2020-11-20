@@ -11,6 +11,9 @@ import java.util.Arrays;
 import java.util.Date;
 import java.util.List;
 
+/**
+ * Route response class for all types of valid requests.
+ */
 @Data
 @SuperBuilder
 @JsonInclude(JsonInclude.Include.NON_NULL)

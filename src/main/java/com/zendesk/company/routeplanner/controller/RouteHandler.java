@@ -72,7 +72,7 @@ public class RouteHandler {
         return routesService.findKShortestPaths(source, destination, graph);
     }
 
-    @Operation(summary = "Find the shortest route (Only 3) between source station and destination station. " +
+    @Operation(summary = "Find atmost 3 (K <= 3) shortest routes between source station and destination station. " +
             "Calculate travel time. Top 3 paths are displayed based on travel time")
     @ApiResponses(value = {
             @ApiResponse(responseCode = "200", description = "Top 3 shortest routes between source and destination are displayed", content = {

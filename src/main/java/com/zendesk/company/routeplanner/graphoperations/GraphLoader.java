@@ -21,6 +21,9 @@ import java.io.InputStreamReader;
 import java.io.Reader;
 import java.util.*;
 
+/**
+ * Class for graph loading operations.
+ */
 public class GraphLoader {
     private final Logger logger = LogManager.getLogger(GraphLoader.class);
 
@@ -31,6 +34,11 @@ public class GraphLoader {
     private Map<String, Set<String>> lineStationsMap = GraphHolder.getInstance().getLineStationsMap();
     private Map<String, List<String>> lineStationsSortedMap = GraphHolder.getInstance().getLineStationsSortedMap();
 
+    /**
+     * Create new FileReader for the input map file.
+     *
+     * @return
+     */
     public Reader getReader() {
         InputStream inputStream = getClass().getClassLoader().getResourceAsStream(Consts.IMPORT_FILE_RESOURCE);
         if (Objects.isNull(inputStream)) {
@@ -39,6 +47,13 @@ public class GraphLoader {
         return new InputStreamReader(inputStream);
     }
 
+    /**
+     * Read CSV records and update the graph data store.
+     *
+     * @param reader
+     * @param startDate
+     * @throws IOException
+     */
     public void readAll(Reader reader, Date startDate) throws IOException {
         Iterable<CSVRecord> records = CSVFormat.EXCEL.withHeader().parse(reader);
 
@@ -71,6 +86,13 @@ public class GraphLoader {
         createLineStationsSortedMap();
     }
 
+    /**
+     * Add stations to the graph based on the opening date.
+     *
+     * @param openingDate
+     * @param currDate
+     * @return
+     */
     private boolean canAddNode(Date openingDate, Date currDate) {
         Calendar startDate = TimeUtil.getCalendarInstance(openingDate);
         Calendar now = TimeUtil.getCalendarInstance(currDate);
@@ -96,6 +118,9 @@ public class GraphLoader {
         logger.info("lineStationsSortedMap - {}", lineStationsSortedMap);
     }
 
+    /**
+     * Generate directed edges for the graph.
+     */
     public void generateEdges() {
         for (Map.Entry<String, Node> entry : codeMap.entrySet()) {
             String sourceCodeValue = entry.getKey();
@@ -117,6 +142,12 @@ public class GraphLoader {
         }
     }
 
+    /**
+     * Add directed edge to the graph data store.
+     *
+     * @param sourceCodeValue
+     * @param sinkCodeValue
+     */
     private void addDirectedEdgeToMap(String sourceCodeValue, String sinkCodeValue) {
         if (codeMap.containsKey(sinkCodeValue)) {
             Node source = codeMap.get(sourceCodeValue);
@@ -138,6 +169,11 @@ public class GraphLoader {
             edgeLabelCodeMap.put(edgeLabelMap, edgeCodeMap);
     }
 
+    /**
+     * Create new graph based on the graph data store values.
+     *
+     * @return
+     */
     public Graph<Node, DefaultWeightedEdge> generateGraph() {
         Graph<Node, DefaultWeightedEdge> graph = new DirectedWeightedMultigraph<>(DefaultWeightedEdge.class);
 

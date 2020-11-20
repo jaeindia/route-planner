@@ -2,6 +2,9 @@ package com.zendesk.company.routeplanner.entity.graph;
 
 import lombok.Data;
 
+/**
+ * Edge class implements standard properties and methods for a weighted edge in a directed graph.
+ */
 @Data
 public class Edge {
     private Node source;

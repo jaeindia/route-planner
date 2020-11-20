@@ -3,6 +3,9 @@ package com.zendesk.company.routeplanner.entity.graph;
 import lombok.Data;
 import java.util.*;
 
+/**
+ * Node class implements a node in a directed graph.
+ */
 @Data
 public class Node {
     private String label;

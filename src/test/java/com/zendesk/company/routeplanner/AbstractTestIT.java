@@ -23,7 +23,7 @@ import java.util.List;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest(classes = RouteplannerApplication.class, webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
-public abstract class AbstractTest {
+public abstract class AbstractTestIT {
     @Autowired
     protected TestRestTemplate restTemplate;
 

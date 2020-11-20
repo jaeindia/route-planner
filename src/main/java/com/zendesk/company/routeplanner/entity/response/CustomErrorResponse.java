@@ -8,6 +8,9 @@ import lombok.ToString;
 import java.util.Date;
 import java.util.Set;
 
+/**
+ * Custom class for error response.
+ */
 @NoArgsConstructor
 @ToString
 @Getter

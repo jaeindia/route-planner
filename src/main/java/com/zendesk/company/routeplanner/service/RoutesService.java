@@ -14,6 +14,9 @@ import java.util.Date;
 import java.util.List;
 import java.util.Map;
 
+/**
+ * Service class to determine the valid routes.
+ */
 @Service
 public class RoutesService {
     private Map<String, Node> labelMap = GraphHolder.getInstance().getLabelMap();
@@ -36,7 +39,7 @@ public class RoutesService {
     }
 
     /**
-     * Find K shortest paths with travel time (K = 3)
+     * Find K shortest paths with travel time (K <= 3)
      *
      * @param sourceStation
      * @param destinationStation
@@ -54,7 +57,7 @@ public class RoutesService {
     }
 
     /**
-     * Validate source/destination nodes
+     * Validate source/destination nodes.
      *
      * @param sourceStation
      * @param destinationStation

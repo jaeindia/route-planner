@@ -2,8 +2,6 @@ package com.zendesk.company.routeplanner.util;
 
 import com.zendesk.company.routeplanner.exception.BadRequestException;
 import com.zendesk.company.routeplanner.exception.ServerErrorException;
-import lombok.AccessLevel;
-import lombok.NoArgsConstructor;
 import org.apache.commons.lang3.StringUtils;
 
 import java.text.DateFormat;
@@ -15,7 +13,9 @@ import java.util.Locale;
 import java.util.TimeZone;
 import java.util.concurrent.TimeUnit;
 
-@NoArgsConstructor(access = AccessLevel.PRIVATE)
+/**
+ * Utility class for date operations.
+ */
 public class TimeUtil {
     public static Date getDateFromString(String dateInString, String dateFormat) {
         if (StringUtils.isEmpty(dateInString)) {

@@ -16,7 +16,10 @@ import java.net.URI;
 import java.net.URISyntaxException;
 import java.util.Arrays;
 
-public class RouteRequestsWithoutTimeIT extends AbstractTest {
+/**
+ * Integration test class to check the behaviour of the api - /api/routes
+ */
+public class RouteRequestsWithoutTimeIT extends AbstractTestIT {
     private final Logger logger = LogManager.getLogger(RouteRequestsWithoutTimeIT.class);
 
     @Test

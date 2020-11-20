@@ -4,6 +4,9 @@ import com.zendesk.company.routeplanner.util.Consts;
 
 import java.util.Date;
 
+/**
+ * Class to check if the time of day is non-peak hours.
+ */
 public class NonPeakHours extends TimeOfDay{
     public NonPeakHours() {
         // Set time

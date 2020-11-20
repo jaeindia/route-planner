@@ -8,6 +8,9 @@ import lombok.experimental.SuperBuilder;
 
 import javax.validation.constraints.NotEmpty;
 
+/**
+ * Route request class without date parameter.
+ */
 @Getter
 @SuperBuilder
 @JsonInclude(JsonInclude.Include.NON_NULL)

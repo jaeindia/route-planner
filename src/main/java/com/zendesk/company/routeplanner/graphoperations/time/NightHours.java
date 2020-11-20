@@ -8,6 +8,9 @@ import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
 
+/**
+ * Class to check if the time of day is night hours.
+ */
 public class NightHours extends TimeOfDay {
     public NightHours() {
         // Set time

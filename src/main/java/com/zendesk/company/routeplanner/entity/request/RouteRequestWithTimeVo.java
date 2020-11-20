@@ -8,6 +8,9 @@ import lombok.experimental.SuperBuilder;
 
 import javax.validation.constraints.NotEmpty;
 
+/**
+ * Route request class with date parameter.
+ */
 @Getter
 @SuperBuilder
 @JsonIgnoreProperties(ignoreUnknown = true)

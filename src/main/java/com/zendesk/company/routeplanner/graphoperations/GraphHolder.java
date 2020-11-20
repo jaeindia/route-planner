@@ -9,6 +9,9 @@ import lombok.Setter;
 
 import java.util.*;
 
+/**
+ * Graph data store class.
+ */
 @Getter
 @Setter
 @NoArgsConstructor(access = AccessLevel.PRIVATE)

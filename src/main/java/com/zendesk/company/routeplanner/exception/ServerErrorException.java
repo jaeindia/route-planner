@@ -2,6 +2,9 @@ package com.zendesk.company.routeplanner.exception;
 
 import org.springframework.http.HttpStatus;
 
+/**
+ * Custom class for ServerErrorException.
+ */
 public class ServerErrorException extends AbstractCustomException {
     private static final long serialVersionUID = 588460394602133353L;
     private static final String MESSAGE = "Internal server error.";

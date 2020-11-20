@@ -3,6 +3,9 @@ package com.zendesk.company.routeplanner.util;
 import lombok.AccessLevel;
 import lombok.NoArgsConstructor;
 
+/**
+ * Global constants class.
+ */
 @NoArgsConstructor(access = AccessLevel.PRIVATE)
 public class Consts {
     // CSV Import file name
@@ -66,6 +69,4 @@ public class Consts {
     public static final String ROUTES_WITH_TIME = "/api/routes/travel-time";
     public static final String X_COM_PERSIST = "X-COM-PERSIST";
     public static final String TRUE = "true";
-
-    public static final String TIME_STAMP_FORMAT = "yyyy-MM-dd hh:mm:ss";
 }

@@ -19,6 +19,9 @@ import org.jgrapht.graph.DefaultWeightedEdge;
 
 import java.util.*;
 
+/**
+ * Class to determine the shortest path.
+ */
 public class ShortestPath {
     private final Logger logger = LogManager.getLogger(ShortestPath.class);
     private Map<String, String> edgeLabelCodeMap = GraphHolder.getInstance().getEdgeLabelCodeMap();
@@ -33,6 +36,15 @@ public class ShortestPath {
         timeTracker = new Date();
     }
 
+    /**
+     * Determine the shortest route (Only 1) between source station and destination station.
+     *
+     * @param source
+     * @param destination
+     * @param K
+     * @param graph
+     * @return
+     */
     public RouteResponseVo findKShortestPaths(Node source, Node destination, int K, Graph<Node, DefaultWeightedEdge> graph) {
         kShortestPathAlgorithm = new YenKShortestPath<>(graph);
         List<GraphPath<Node, DefaultWeightedEdge>> paths = kShortestPathAlgorithm.getPaths(source, destination, K);
@@ -43,6 +55,17 @@ public class ShortestPath {
         return routeResponseVo;
     }
 
+    /**
+     * Determine atmost 3 (K <= 3) shortest routes between source station and destination station and calculate travel time.
+     * Top 3 paths are sorted based on the travel time.
+     *
+     * @param source
+     * @param destination
+     * @param K
+     * @param date
+     * @param graph
+     * @return
+     */
     public List<RouteResponseVo> findKShortestPaths(Node source, Node destination, int K, Date date, Graph<Node, DefaultWeightedEdge> graph) {
         kShortestPathAlgorithm = new YenKShortestPath<>(graph);
         List<GraphPath<Node, DefaultWeightedEdge>> paths = kShortestPathAlgorithm.getPaths(source, destination, K);
@@ -113,6 +136,13 @@ public class ShortestPath {
         generateSteps(route, routeResponseVo, calculateTravelTime);
     }
 
+    /**
+     * Generate steps.
+     *
+     * @param route
+     * @param routeResponseVo
+     * @param calculateTravelTime
+     */
     private void generateSteps(List<String> route, RouteResponseVo routeResponseVo, boolean calculateTravelTime) {
         List<String> steps = new ArrayList<>();
 

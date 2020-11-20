@@ -25,7 +25,10 @@ import java.net.URI;
 import java.net.URISyntaxException;
 import java.util.*;
 
-public class RouteRequestsWithTimeIT extends AbstractTest {
+/**
+ * Integration test class to check the behaviour of the api - /api/routes/travel-time
+ */
+public class RouteRequestsWithTimeIT extends AbstractTestIT {
     private final Logger logger = LogManager.getLogger(RouteRequestsWithTimeIT.class);
 
     @Test
