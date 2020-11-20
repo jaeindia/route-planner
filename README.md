@@ -18,6 +18,9 @@ mvn clean package spring-boot:repackage
 java -jar target/routeplanner-0.0.1-SNAPSHOT.jar
 ```
 
+**(Or)**
+
+
 **Download executables**
 
 [routeplanner-0.0.1-SNAPSHOT.jar](executable/routeplanner-0.0.1-SNAPSHOT.jar)
