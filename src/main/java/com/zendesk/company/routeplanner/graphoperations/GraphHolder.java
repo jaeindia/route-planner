@@ -6,9 +6,6 @@ import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import org.jgrapht.Graph;
-import org.jgrapht.graph.DefaultWeightedEdge;
-import org.jgrapht.graph.DirectedWeightedMultigraph;
 
 import java.util.*;
 
@@ -22,7 +19,6 @@ public class GraphHolder {
     private final Map<String, String> edgeLabelCodeMap = new HashMap<>();
     private final Map<String, Set<String>> lineStationsMap = new HashMap<>();
     private final Map<String, List<String>> lineStationsSortedMap = new HashMap<>();
-    private final Graph<Node, DefaultWeightedEdge> graph = new DirectedWeightedMultigraph<>(DefaultWeightedEdge.class);
 
     private static GraphHolder instance;
 

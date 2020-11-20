@@ -1,5 +1,6 @@
 package com.zendesk.company.routeplanner.controller;
 
+import com.zendesk.company.routeplanner.entity.graph.Node;
 import com.zendesk.company.routeplanner.entity.request.RouteRequestVo;
 import com.zendesk.company.routeplanner.entity.request.RouteRequestWithTimeVo;
 import com.zendesk.company.routeplanner.entity.response.RouteResponseVo;
@@ -15,6 +16,8 @@ import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import org.jgrapht.Graph;
+import org.jgrapht.graph.DefaultWeightedEdge;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -64,8 +67,9 @@ public class RouteHandler {
 
         // Load graph based on curr date
         graphService.setStartDate(new Date());
-        graphService.generateMap();
-        return routesService.findKShortestPaths(source, destination);
+        Graph<Node, DefaultWeightedEdge> graph = graphService.generateGraph();
+        logger.info("Graph loaded.");
+        return routesService.findKShortestPaths(source, destination, graph);
     }
 
     @Operation(summary = "Find the shortest route (Only 3) between source station and destination station. " +
@@ -97,9 +101,10 @@ public class RouteHandler {
 
         // Load graph based on start date
         graphService.setStartDate(date);
-        graphService.generateMap();
+        Graph<Node, DefaultWeightedEdge> graph = graphService.generateGraph();
+        logger.info("Graph loaded.");
 
-        List<RouteResponseVo> responseList = routesService.findKShortestPaths(source, destination, date);
+        List<RouteResponseVo> responseList = routesService.findKShortestPaths(source, destination, date, graph);
         if (responseList.isEmpty()) {
             throw new NoValidPathsExistException();
         }

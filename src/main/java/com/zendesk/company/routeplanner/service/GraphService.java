@@ -20,13 +20,11 @@ import java.util.Date;
 public class GraphService {
     private final Logger logger = LogManager.getLogger(GraphService.class);
     private GraphLoader graphLoader;
-    private Graph<Node, DefaultWeightedEdge> graph;
     @Setter
     private Date startDate;
 
     public GraphService() {
         graphLoader = new GraphLoader();
-        graph = GraphHolder.getInstance().getGraph();
         startDate = new Date();
     }
 
@@ -34,7 +32,7 @@ public class GraphService {
     /**
      * Generate Staions graph from the import file.
      */
-    public void generateMap() {
+    public Graph<Node, DefaultWeightedEdge> generateGraph() {
         Reader reader = graphLoader.getReader();
 
         try {
@@ -46,10 +44,10 @@ public class GraphService {
         // Generate edges
         graphLoader.generateEdges();
         logger.info("edgeMap - {}", GraphHolder.getInstance().getEdgeMap());
-        logger.info("edges - {}", GraphHolder.getInstance().getEdgeMap().values().size());
+        logger.info("Edges - {}", GraphHolder.getInstance().getEdgeMap().values().size());
+        logger.info("Nodes - {}", GraphHolder.getInstance().getLabelMap().size());
 
         // Load Nodes and Edges in the graph
-        graphLoader.generateGraph();
-        logger.info("Graph loaded.");
+        return graphLoader.generateGraph();
     }
 }

@@ -13,6 +13,7 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.jgrapht.Graph;
 import org.jgrapht.graph.DefaultWeightedEdge;
+import org.jgrapht.graph.DirectedWeightedMultigraph;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -23,13 +24,12 @@ import java.util.*;
 public class GraphLoader {
     private final Logger logger = LogManager.getLogger(GraphLoader.class);
 
-    private final Map<String, Edge> edgeMap = GraphHolder.getInstance().getEdgeMap();
-    private final Map<String, Node> codeMap = GraphHolder.getInstance().getCodeMap();
-    private final Map<String, Node> labelMap = GraphHolder.getInstance().getLabelMap();
-    private final Map<String, String> edgeLabelCodeMap = GraphHolder.getInstance().getEdgeLabelCodeMap();
-    private final Map<String, Set<String>> lineStationsMap = GraphHolder.getInstance().getLineStationsMap();
-    private final Map<String, List<String>> lineStationsSortedMap = GraphHolder.getInstance().getLineStationsSortedMap();
-    private final Graph<Node, DefaultWeightedEdge> graph = GraphHolder.getInstance().getGraph();
+    private Map<String, Edge> edgeMap = GraphHolder.getInstance().getEdgeMap();
+    private Map<String, Node> codeMap = GraphHolder.getInstance().getCodeMap();
+    private Map<String, Node> labelMap = GraphHolder.getInstance().getLabelMap();
+    private Map<String, String> edgeLabelCodeMap = GraphHolder.getInstance().getEdgeLabelCodeMap();
+    private Map<String, Set<String>> lineStationsMap = GraphHolder.getInstance().getLineStationsMap();
+    private Map<String, List<String>> lineStationsSortedMap = GraphHolder.getInstance().getLineStationsSortedMap();
 
     public Reader getReader() {
         InputStream inputStream = getClass().getClassLoader().getResourceAsStream(Consts.IMPORT_FILE_RESOURCE);
@@ -138,7 +138,9 @@ public class GraphLoader {
             edgeLabelCodeMap.put(edgeLabelMap, edgeCodeMap);
     }
 
-    public void generateGraph() {
+    public Graph<Node, DefaultWeightedEdge> generateGraph() {
+        Graph<Node, DefaultWeightedEdge> graph = new DirectedWeightedMultigraph<>(DefaultWeightedEdge.class);
+
         // Add nodes to the Graph
         for (Map.Entry<String, Node> entry : labelMap.entrySet()) {
             Node node = entry.getValue();
@@ -151,5 +153,7 @@ public class GraphLoader {
             DefaultWeightedEdge graphEdge = graph.addEdge(edge.getSource(), edge.getSink());
             graph.setEdgeWeight(graphEdge, edge.getWeight());
         }
+
+        return graph;
     }
 }

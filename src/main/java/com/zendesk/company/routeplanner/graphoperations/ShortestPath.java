@@ -21,14 +21,20 @@ import java.util.*;
 
 public class ShortestPath {
     private final Logger logger = LogManager.getLogger(ShortestPath.class);
-    private final Graph<Node, DefaultWeightedEdge> graph = GraphHolder.getInstance().getGraph();
-    private final Map<String, String> edgeLabelCodeMap = GraphHolder.getInstance().getEdgeLabelCodeMap();
-    private final Map<String, Node> codeMap = GraphHolder.getInstance().getCodeMap();
-    private final KShortestPathAlgorithm<Node, DefaultWeightedEdge> kShortestPathAlgorithm = new YenKShortestPath<>(graph);
-    private Date startTime = new Date();
-    private Date timeTracker = new Date();
+    private Map<String, String> edgeLabelCodeMap = GraphHolder.getInstance().getEdgeLabelCodeMap();
+    private Map<String, Node> codeMap = GraphHolder.getInstance().getCodeMap();
+    private KShortestPathAlgorithm<Node, DefaultWeightedEdge> kShortestPathAlgorithm;
 
-    public RouteResponseVo findKShortestPaths(Node source, Node destination, int K) {
+    private Date startTime;
+    private Date timeTracker;
+
+    public ShortestPath() {
+        startTime = new Date();
+        timeTracker = new Date();
+    }
+
+    public RouteResponseVo findKShortestPaths(Node source, Node destination, int K, Graph<Node, DefaultWeightedEdge> graph) {
+        kShortestPathAlgorithm = new YenKShortestPath<>(graph);
         List<GraphPath<Node, DefaultWeightedEdge>> paths = kShortestPathAlgorithm.getPaths(source, destination, K);
         RouteResponseVo routeResponseVo = RouteResponseVo.builder()
                 .source(source.getLabel())
@@ -37,8 +43,10 @@ public class ShortestPath {
         return routeResponseVo;
     }
 
-    public List<RouteResponseVo> findKShortestPaths(Node source, Node destination, int K, Date date) {
+    public List<RouteResponseVo> findKShortestPaths(Node source, Node destination, int K, Date date, Graph<Node, DefaultWeightedEdge> graph) {
+        kShortestPathAlgorithm = new YenKShortestPath<>(graph);
         List<GraphPath<Node, DefaultWeightedEdge>> paths = kShortestPathAlgorithm.getPaths(source, destination, K);
+        logger.info("paths - {}", paths);
         List<RouteResponseVo> responseVos = new ArrayList<>();
         RouteResponseVo prevRouteResponseVo = null;
         for (GraphPath<Node, DefaultWeightedEdge> path : paths) {
@@ -57,9 +65,13 @@ public class ShortestPath {
             if (routeResponseVo.isValid())
                 responseVos.add(routeResponseVo);
 
+            logger.info("prevRouteResponseVo - {}", prevRouteResponseVo);
+            logger.info("routeResponseVo - {}", routeResponseVo);
+
             // Remove duplicate paths
             if (Objects.nonNull(prevRouteResponseVo) && prevRouteResponseVo.equals(routeResponseVo)
                     && !responseVos.isEmpty()) {
+                logger.info("Removing path - {}", responseVos.get(responseVos.size() - 1));
                 responseVos.remove(responseVos.size() - 1);
             }
 
@@ -73,9 +85,8 @@ public class ShortestPath {
 
     private void updateResponseVo(GraphPath<Node, DefaultWeightedEdge> path, RouteResponseVo routeResponseVo, boolean calculateTravelTime) {
         Set<String> codePath = new LinkedHashSet<>();
-        logger.info(path.getVertexList());
-        logger.info(path.getEdgeList());
-        logger.info("Edges size - {}", path.getEdgeList().size());
+        logger.info("Path - {}", path.getVertexList());
+        logger.info("Edges - {}", path.getEdgeList().size());
 
         // Get route
         Node source = path.getVertexList().get(0);
