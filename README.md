@@ -18,9 +18,17 @@ mvn clean package spring-boot:repackage
 java -jar target/routeplanner-0.0.1-SNAPSHOT.jar
 ```
 
-**Download executable jar**
+**Download executables**
 
-[jar](executable/routeplanner-0.0.1-SNAPSHOT.jar)
+[routeplanner-0.0.1-SNAPSHOT.jar](executable/routeplanner-0.0.1-SNAPSHOT.jar)
+
+[application.properties](src/main/resources/application.properties)
+
+Download the above files and run the application.
+```
+java -jar routeplanner-0.0.1-SNAPSHOT.jar --spring.config.location="file:application.properties" --server.port=8089
+```
+
 ## APIs
 **OpenAPI descriptions**
 
