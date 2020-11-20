@@ -221,7 +221,7 @@ Find atmost 3 (K <= 3) shortest routes between source station and destination st
   }
 ]
 ```
-## Project Structure        .
+## Project Structure
 ```
 ├── main
 │   ├── java
