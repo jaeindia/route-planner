@@ -1,6 +1,6 @@
-package com.zendesk.company.routeplanner.graphoperations.time;
+package com.zendesk.company.routeplanner.service.graphoperations.time;
 
-import com.zendesk.company.routeplanner.util.Consts;
+import com.zendesk.company.routeplanner.constants.Consts;
 import lombok.Getter;
 import lombok.Setter;
 

@@ -1,4 +1,4 @@
-package com.zendesk.company.routeplanner.graphoperations;
+package com.zendesk.company.routeplanner.service.graphoperations;
 
 import com.zendesk.company.routeplanner.entity.graph.Edge;
 import com.zendesk.company.routeplanner.entity.graph.Node;

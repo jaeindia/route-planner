@@ -1,4 +1,4 @@
-package com.zendesk.company.routeplanner.util;
+package com.zendesk.company.routeplanner.constants;
 
 import lombok.AccessLevel;
 import lombok.NoArgsConstructor;

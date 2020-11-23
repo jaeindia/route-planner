@@ -1,4 +1,4 @@
-package com.zendesk.company.routeplanner.graphoperations.time;
+package com.zendesk.company.routeplanner.service.graphoperations.time;
 
 import java.util.Date;
 

@@ -1,7 +1,7 @@
 package com.zendesk.company.routeplanner.exception.handler;
 
 import com.zendesk.company.routeplanner.exception.AbstractCustomException;
-import com.zendesk.company.routeplanner.util.Consts;
+import com.zendesk.company.routeplanner.constants.Consts;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.context.support.DefaultMessageSourceResolvable;

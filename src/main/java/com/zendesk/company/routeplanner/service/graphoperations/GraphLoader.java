@@ -1,10 +1,10 @@
-package com.zendesk.company.routeplanner.graphoperations;
+package com.zendesk.company.routeplanner.service.graphoperations;
 
 import com.zendesk.company.routeplanner.entity.graph.Edge;
 import com.zendesk.company.routeplanner.entity.graph.Line;
 import com.zendesk.company.routeplanner.entity.graph.Node;
 import com.zendesk.company.routeplanner.exception.ServerErrorException;
-import com.zendesk.company.routeplanner.util.Consts;
+import com.zendesk.company.routeplanner.constants.Consts;
 import com.zendesk.company.routeplanner.util.TimeUtil;
 import org.apache.commons.collections4.CollectionUtils;
 import org.apache.commons.csv.CSVFormat;

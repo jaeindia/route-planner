@@ -1,10 +1,10 @@
-package com.zendesk.company.routeplanner.graphoperations;
+package com.zendesk.company.routeplanner.service.graphoperations;
 
 import com.zendesk.company.routeplanner.entity.graph.Line;
 import com.zendesk.company.routeplanner.entity.graph.Node;
 import com.zendesk.company.routeplanner.entity.response.RouteResponseVo;
-import com.zendesk.company.routeplanner.graphoperations.time.TravelTimeCalcContext;
-import com.zendesk.company.routeplanner.util.Consts;
+import com.zendesk.company.routeplanner.service.graphoperations.time.TravelTimeCalcContext;
+import com.zendesk.company.routeplanner.constants.Consts;
 import com.zendesk.company.routeplanner.util.TimeUtil;
 import org.apache.commons.codec.binary.StringUtils;
 import org.apache.commons.collections4.CollectionUtils;

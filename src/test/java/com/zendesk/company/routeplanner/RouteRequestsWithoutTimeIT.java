@@ -3,7 +3,7 @@ package com.zendesk.company.routeplanner;
 import com.zendesk.company.routeplanner.entity.request.RouteRequestVo;
 import com.zendesk.company.routeplanner.entity.response.CustomErrorResponse;
 import com.zendesk.company.routeplanner.entity.response.RouteResponseVo;
-import com.zendesk.company.routeplanner.util.Consts;
+import com.zendesk.company.routeplanner.constants.Consts;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.junit.Assert;

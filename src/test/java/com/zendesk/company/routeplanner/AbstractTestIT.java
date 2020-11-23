@@ -3,12 +3,10 @@ package com.zendesk.company.routeplanner;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.core.JsonParseException;
 import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.zendesk.company.routeplanner.entity.response.RouteResponseVo;
-import com.zendesk.company.routeplanner.util.Consts;
+import com.zendesk.company.routeplanner.constants.Consts;
 import org.junit.Before;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,7 +17,6 @@ import org.springframework.http.HttpHeaders;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import java.io.IOException;
-import java.util.List;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest(classes = RouteplannerApplication.class, webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)

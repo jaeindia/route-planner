@@ -2,9 +2,9 @@ package com.zendesk.company.routeplanner.service;
 
 import com.zendesk.company.routeplanner.entity.graph.Node;
 import com.zendesk.company.routeplanner.exception.ServerErrorException;
-import com.zendesk.company.routeplanner.graphoperations.GraphHolder;
-import com.zendesk.company.routeplanner.graphoperations.GraphLoader;
-import com.zendesk.company.routeplanner.util.Consts;
+import com.zendesk.company.routeplanner.service.graphoperations.GraphHolder;
+import com.zendesk.company.routeplanner.service.graphoperations.GraphLoader;
+import com.zendesk.company.routeplanner.constants.Consts;
 import lombok.Setter;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
